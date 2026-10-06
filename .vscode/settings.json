@@ -1,0 +1,136 @@
+{
+    "containers.containerClient": "com.microsoft.visualstudio.containers.docker",
+    "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.dockercompose",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "workbench.editor.empty.hint": "hidden",
+    "C_Cpp.default.compilerPath": "C:/MinGW/bin/gcc.exe",
+    "code-runner.executorMap": {
+        "javascript": "node",
+        "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "zig": "zig run",
+        "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "php": "php",
+        "python": "python -u",
+        "perl": "perl",
+        "perl6": "perl6",
+        "ruby": "ruby",
+        "go": "go run",
+        "lua": "lua",
+        "groovy": "groovy",
+        "powershell": "powershell -ExecutionPolicy ByPass -File",
+        "bat": "cmd /c",
+        "shellscript": "bash",
+        "fsharp": "fsi",
+        "csharp": "scriptcs",
+        "vbscript": "cscript //Nologo",
+        "typescript": "ts-node",
+        "coffeescript": "coffee",
+        "scala": "scala",
+        "swift": "swift",
+        "julia": "julia",
+        "crystal": "crystal",
+        "ocaml": "ocaml",
+        "r": "Rscript",
+        "applescript": "osascript",
+        "clojure": "lein exec",
+        "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+        "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+        "racket": "racket",
+        "scheme": "csi -script",
+        "ahk": "autohotkey",
+        "autoit": "autoit3",
+        "dart": "dart",
+        "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+        "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+        "haskell": "runghc",
+        "nim": "nim compile --verbosity:0 --hints:off --run",
+        "lisp": "sbcl --script",
+        "kit": "kitc --run",
+        "v": "v run",
+        "sass": "sass --style expanded",
+        "scss": "scss --style expanded",
+        "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
+        "FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "sml": "cd $dir && sml $fileName",
+        "mojo": "mojo run",
+        "erlang": "escript",
+        "spwn": "spwn build",
+        "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
+        "gleam": "gleam run -m $fileNameWithoutExt"
+    },
+    "github.copilot.chat.codeGeneration.useInstructionFiles": false,
+    "github.copilot.chat.customInstructionsInSystemMessage": false,
+    "github.copilot.chat.useProjectTemplates": false,
+    "github.copilot.nextEditSuggestions.fixes": false,
+    "github.copilot.renameSuggestions.triggerAutomatically": false,
+    "github.copilot.chat.copilotDebugCommand.enabled": false,
+    "github.copilot.chat.reviewSelection.enabled": false,
+    "github.copilot.chat.startDebugging.enabled": false,
+    "github.copilot.chat.agent.currentEditorContext.enabled": false,
+    "github.copilot.chat.edits.suggestRelatedFilesForTests": false,
+    "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": false,
+    "github.copilot.chat.newWorkspaceCreation.enabled": false,
+    "github.copilot.chat.setupTests.enabled": false,
+    "github.copilot.chat.summarizeAgentConversationHistory.enabled": false,
+    "chat.notifyWindowOnConfirmation": "off",
+    "workbench.secondarySideBar.defaultVisibility": "visible",
+    "github.copilot.enable": {
+        "*": false
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "python.defaultInterpreterPath": "c:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "python.createEnvironment.trigger": "off",
+    "amp.url": "https://ampcode.com/",
+    "editor.wordBasedSuggestions": "off",
+    "amp.tab.enabled": true,
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.yaml": "default",
+        "*.csv": "default"
+    },
+    "git.enableSmartCommit": true,
+    "claudeCode.preferredLocation": "panel",
+    "claudeCode.disableLoginPrompt": true,
+    "claudeCode.environmentVariables": [
+        {
+            "name": "ANTHROPIC_BASE_URL",
+            "value": "http://localhost:8082"
+        },
+        {
+            "name": "ANTHROPIC_AUTH_TOKEN",
+            "value": "freecc"
+        },
+        {
+            "name": "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY",
+            "value": "1"
+        },
+        {
+            "name": "CLAUDE_CODE_AUTO_COMPACT_WINDOW",
+            "value": "190000"
+        },
+        {
+            "name": "DISABLE_AUTOUPDATER",
+            "value": "1"
+        },
+        {
+            "name": "DISABLE_FEEDBACK_COMMAND",
+            "value": "1"
+        },
+        {
+            "name": "DISABLE_ERROR_REPORTING",
+            "value": "1"
+        }
+    ],
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "claudeCode.focusView": false,
+    "chat.viewSessions.orientation": "stacked"
+}

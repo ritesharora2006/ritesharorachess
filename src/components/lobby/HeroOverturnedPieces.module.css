@@ -1,0 +1,290 @@
+/* ============================================================
+   RITESH CHESS — Hero Ambient Piece Animations
+   Animate ONLY the 3 designated hero pieces:
+   1. Top Circled Knight (behind EVERY): Subtle breathing + gentle glow pulse
+   2. Bottom-Left Circled Pawn (above stats): Smooth vertical float/bob + golden-white glow pulse
+   3. Right Circled Golden Knight Emblem: Slow premium specular shimmer sweep + subtle breathing
+   All other elements are 100% stationary and unchanged.
+   ============================================================ */
+
+.stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2; /* Sits behind heroCopy (z-index: 5) */
+  perspective: 900px;
+}
+
+/* Base piece slot positioned at exact hero coordinates */
+.pieceSlot {
+  position: absolute;
+  top: 0;
+  left: var(--x-pos);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* Layer depths for atmospheric perspective */
+.layerBack {
+  filter: blur(var(--blur-amt, 3.5px));
+  z-index: 1;
+}
+
+.layerMid {
+  filter: blur(1.2px);
+  z-index: 2;
+}
+
+.layerFront {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.8));
+  z-index: 3;
+}
+
+/* Static, settled ground shadow */
+.shadow {
+  position: absolute;
+  bottom: -6px;
+  width: calc(var(--piece-size, 100px) * 0.7);
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.75) 0%, transparent 75%);
+  pointer-events: none;
+  opacity: var(--shadow-opacity, 0.65);
+}
+
+/* Piece SVG sizing */
+.pieceSvg {
+  width: var(--piece-size, 100px);
+  height: var(--piece-size, 100px);
+  display: block;
+}
+
+/* Ghost Gold / Oxidized Brass Finish */
+.ghostGold {
+  filter: drop-shadow(0 0 2px rgba(194, 155, 72, 0.35));
+}
+
+.ghostGold path {
+  stroke: var(--brass-rule) !important;
+}
+
+/* Ghost Silver / Aged Boxwood Finish */
+.ghostSilver {
+  filter: drop-shadow(0 0 2px rgba(237, 228, 211, 0.25));
+}
+
+.ghostSilver path {
+  stroke: rgba(237, 228, 211, 0.45) !important;
+}
+
+/* ============================================================
+   1. TOP CIRCLED KNIGHT (Behind "EVERY")
+   Subtle idle breathing motion with a very gentle glow/shimmer pulse
+   ============================================================ */
+
+.topKnight {
+  opacity: var(--target-opacity, 0.55);
+  transform: translateY(var(--target-y)) translateZ(0px) rotateX(0deg) rotateZ(var(--rot-z-land, 84deg)) scale(var(--scale, 0.92));
+  animation: topKnightBreathing 4.8s ease-in-out infinite;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes topKnightBreathing {
+  0% {
+    transform: translateY(var(--target-y)) translateZ(0px) rotateX(0deg) rotateZ(var(--rot-z-land, 84deg)) scale(var(--scale, 0.92));
+    opacity: var(--target-opacity, 0.55);
+    filter: drop-shadow(0 0 2px rgba(237, 228, 211, 0.2));
+  }
+  50% {
+    transform: translateY(calc(var(--target-y) - 3.5px)) translateZ(6px) rotateX(0deg) rotateZ(calc(var(--rot-z-land, 84deg) + 0.6deg)) scale(calc(var(--scale, 0.92) * 1.028));
+    opacity: calc(var(--target-opacity, 0.55) + 0.18);
+    filter: drop-shadow(0 0 10px rgba(237, 228, 211, 0.6)) drop-shadow(0 0 20px rgba(194, 155, 72, 0.25));
+  }
+  100% {
+    transform: translateY(var(--target-y)) translateZ(0px) rotateX(0deg) rotateZ(var(--rot-z-land, 84deg)) scale(var(--scale, 0.92));
+    opacity: var(--target-opacity, 0.55);
+    filter: drop-shadow(0 0 2px rgba(237, 228, 211, 0.2));
+  }
+}
+
+/* ============================================================
+   2. BOTTOM-LEFT CIRCLED PAWN (Above stats card)
+   Tiny smooth vertical floating/bobbing motion with soft golden-white glow pulse
+   ============================================================ */
+
+.bottomPawn {
+  opacity: var(--target-opacity, 0.85);
+  transform: translateY(var(--target-y)) translateZ(0px) rotateX(0deg) rotateZ(var(--rot-z-land, 11deg)) scale(var(--scale, 0.85));
+  animation: pawnFloatBob 3.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes pawnFloatBob {
+  0% {
+    transform: translateY(var(--target-y)) translateZ(0px) rotateX(0deg) rotateZ(var(--rot-z-land, 11deg)) scale(var(--scale, 0.85));
+  }
+  50% {
+    transform: translateY(calc(var(--target-y) - 6.5px)) translateZ(8px) rotateX(0deg) rotateZ(calc(var(--rot-z-land, 11deg) + 0.4deg)) scale(calc(var(--scale, 0.85) * 1.015));
+  }
+  100% {
+    transform: translateY(var(--target-y)) translateZ(0px) rotateX(0deg) rotateZ(var(--rot-z-land, 11deg)) scale(var(--scale, 0.85));
+  }
+}
+
+.bottomPawn .pieceSvg {
+  animation: pawnGlowPulse 3.6s ease-in-out infinite;
+  will-change: filter, opacity;
+}
+
+@keyframes pawnGlowPulse {
+  0% {
+    filter: drop-shadow(0 0 3px rgba(194, 155, 72, 0.35)) drop-shadow(0 0 1px rgba(255, 255, 255, 0.25));
+    opacity: 0.85;
+  }
+  50% {
+    filter: drop-shadow(0 0 13px rgba(194, 155, 72, 0.85)) drop-shadow(0 0 7px rgba(255, 255, 255, 0.7));
+    opacity: 1;
+  }
+  100% {
+    filter: drop-shadow(0 0 3px rgba(194, 155, 72, 0.35)) drop-shadow(0 0 1px rgba(255, 255, 255, 0.25));
+    opacity: 0.85;
+  }
+}
+
+.bottomPawn .shadow {
+  animation: pawnShadowFloat 3.6s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes pawnShadowFloat {
+  0% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.38;
+    transform: scale(0.9) translateY(3px);
+  }
+  100% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+}
+
+/* ============================================================
+   3. RIGHT CIRCLED GOLDEN KNIGHT EMBLEM (Near board)
+   Slow premium shimmer passing across emblem + extremely subtle breathing/scale effect
+   ============================================================ */
+
+.goldenKnight {
+  opacity: var(--target-opacity, 0.88);
+  transform: translateY(var(--target-y)) translateZ(0px) rotateX(0deg) rotateZ(var(--rot-z-land, 195deg)) scale(var(--scale, 1.05));
+  animation: goldenKnightBreath 5.8s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+@keyframes goldenKnightBreath {
+  0% {
+    transform: translateY(var(--target-y)) translateZ(0px) rotateX(0deg) rotateZ(var(--rot-z-land, 195deg)) scale(var(--scale, 1.05));
+    filter: drop-shadow(0 0 3px rgba(194, 155, 72, 0.35));
+  }
+  50% {
+    transform: translateY(calc(var(--target-y) - 2.5px)) translateZ(6px) rotateX(0deg) rotateZ(calc(var(--rot-z-land, 195deg) - 0.4deg)) scale(calc(var(--scale, 1.05) * 1.022));
+    filter: drop-shadow(0 0 14px rgba(194, 155, 72, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.45));
+  }
+  100% {
+    transform: translateY(var(--target-y)) translateZ(0px) rotateX(0deg) rotateZ(var(--rot-z-land, 195deg)) scale(var(--scale, 1.05));
+    filter: drop-shadow(0 0 3px rgba(194, 155, 72, 0.35));
+  }
+}
+
+/* Specular shimmer beam traveling across the emblem */
+.emblemShimmerContainer {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.emblemShimmerBeam {
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 36%,
+    rgba(255, 255, 255, 0.08) 43%,
+    rgba(255, 235, 175, 0.72) 50%,
+    rgba(255, 255, 255, 0.08) 57%,
+    transparent 64%,
+    transparent 100%
+  );
+  transform: translateX(-160%) rotate(15deg);
+  animation: emblemShimmerPass 5.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  mix-blend-mode: overlay;
+}
+
+@keyframes emblemShimmerPass {
+  0% {
+    transform: translateX(-160%) rotate(15deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.95;
+  }
+  42% {
+    transform: translateX(160%) rotate(15deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(160%) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   STATIC PIECES (Rook & King) — 100% Stationary
+   ============================================================ */
+
+.staticPiece {
+  opacity: var(--target-opacity, 0.85);
+  transform: translateY(var(--target-y)) translateZ(0px) rotateX(0deg) rotateZ(var(--rot-z-land, 0deg)) scale(var(--scale, 1));
+}
+
+/* Universal Accessibility: Reduced Motion Softening */
+@media (prefers-reduced-motion: reduce) {
+  .topKnight,
+  .bottomPawn,
+  .bottomPawn .pieceSvg,
+  .bottomPawn .shadow,
+  .goldenKnight,
+  .emblemShimmerBeam {
+    animation: none !important;
+  }
+}
+
+/* Tablet & Mobile Scale Adjustments */
+@media (max-width: 860px) {
+  .pieceSvg {
+    width: calc(var(--piece-size, 100px) * 0.75);
+    height: calc(var(--piece-size, 100px) * 0.75);
+  }
+}
+
+@media (max-width: 580px) {
+  .pieceSvg {
+    width: calc(var(--piece-size, 100px) * 0.55);
+    height: calc(var(--piece-size, 100px) * 0.55);
+  }
+}

@@ -1,0 +1,230 @@
+/* ============================================================
+   RITESH CHESS — Interactive Tactical Puzzles Modal
+   ============================================================ */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 10, 14, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal {
+  width: 100%;
+  max-width: 780px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: var(--hall-surface, #141820);
+  border: 1px solid var(--border, #2a3242);
+  border-top: 2px solid var(--brass-burnished, #c29b48);
+  border-radius: var(--radius-lg, 8px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  color: var(--boxwood-pure, #ede4d3);
+}
+
+.header {
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border, #2a3242);
+  background: var(--hall-inset, #0d1017);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--brass-burnished, #c29b48);
+}
+
+.title {
+  font-family: var(--font-editorial, 'Newsreader', serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--boxwood-pure, #ede4d3);
+}
+
+.closeBtn {
+  background: transparent;
+  border: 1px solid var(--border, #2a3242);
+  color: var(--boxwood-subtle, #9e978a);
+  font-size: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.closeBtn:hover {
+  border-color: var(--brass-rule, #423722);
+  color: var(--boxwood-pure, #ede4d3);
+}
+
+.body {
+  padding: 1.5rem 1.75rem;
+  display: grid;
+  grid-template-columns: minmax(300px, 380px) 1fr;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.boardContainer {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 380px;
+  margin: 0 auto;
+  border: 2px solid var(--brass-rule, #423722);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+}
+
+.sideContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.statusCard {
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.statusNeutral {
+  background: var(--hall-inset, #0d1017);
+  border: 1px solid var(--border, #2a3242);
+  color: var(--boxwood-pure, #ede4d3);
+}
+
+.statusSuccess {
+  background: rgba(46, 204, 113, 0.12);
+  border: 1px solid rgba(46, 204, 113, 0.4);
+  color: #2ecc71;
+}
+
+.statusWrong {
+  background: rgba(231, 76, 60, 0.12);
+  border: 1px solid rgba(231, 76, 60, 0.4);
+  color: #e74c3c;
+}
+
+.promptCard {
+  background: var(--hall-inset, #0d1017);
+  border: 1px solid var(--border, #2a3242);
+  border-radius: 6px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.promptText {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--boxwood-pure, #ede4d3);
+  margin: 0;
+}
+
+.hintBox {
+  padding: 0.75rem 1rem;
+  background: rgba(194, 155, 72, 0.08);
+  border-left: 3px solid var(--brass-burnished, #c29b48);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.85rem;
+  color: var(--boxwood-pure, #ede4d3);
+  line-height: 1.4;
+}
+
+.citation {
+  font-family: var(--font-notation, monospace);
+  font-size: 0.75rem;
+  color: var(--boxwood-subtle, #9e978a);
+}
+
+.footerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.btn {
+  padding: 0.65rem 1.25rem;
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.15s ease;
+}
+
+.primaryBtn {
+  background: var(--brass-burnished, #c29b48);
+  color: #0d1017;
+  border: 1px solid var(--brass-burnished, #c29b48);
+}
+
+.primaryBtn:hover {
+  background: #d4ac59;
+}
+
+.secondaryBtn {
+  background: transparent;
+  border: 1px solid var(--border, #2a3242);
+  color: var(--boxwood-pure, #ede4d3);
+}
+
+.secondaryBtn:hover {
+  border-color: var(--brass-rule, #423722);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 720px) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+  .boardContainer {
+    max-width: 100%;
+  }
+}
+

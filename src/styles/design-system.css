@@ -1,0 +1,440 @@
+/* ============================================================
+   RITESH CHESS — Tournament Platform Design System
+   Materials: Tournament Hall Slate, Aged Boxwood Ivory,
+   Burnished Brass, Championship Felt Emerald, Walnut Timber.
+   ============================================================ */
+
+:root {
+  /* Authentic Chess Material System */
+  --hall-slate: #0e1114;       /* Tournament hall slate base */
+  --hall-surface: #161b21;     /* Table scorecard surface */
+  --hall-raised: #1d232b;      /* Plaque elevated card */
+  --hall-inset: #0a0c0f;       /* Inset board wells */
+
+  --boxwood-ivory: #ede4d3;    /* Aged Staunton boxwood / archival paper */
+  --boxwood-pure: #f7f2ea;     /* Clean stark ivory highlight */
+  --boxwood-subtle: #9d988f;   /* Coordinates and secondary literature */
+  --boxwood-faint: #635f58;    /* Archival footnote rule */
+
+  --brass-burnished: #c29b48;  /* Oxidized brass clock bezel & crown */
+  --brass-soft: #d6b25e;       /* Burnished brass highlight */
+  --brass-rule: #7a602b;       /* Hairline structural dividers */
+  --brass-dim: #382c14;        /* Subdued brass ground */
+  --brass-glow: rgba(194, 155, 72, 0.12);
+
+  --felt-emerald: #234937;     /* Championship baize felt */
+  --felt-light: #31644b;       /* Active tournament indicator */
+  --felt-badge: #193628;
+
+  --walnut-border: #26211b;    /* Physical board timber edge */
+  --walnut-rim: #382e25;
+
+  /* Backward Compatible Semantic Mappings */
+  --bg: var(--hall-slate);
+  --bg-elevated: var(--hall-surface);
+  --bg-raised: var(--hall-raised);
+  --bg-inset: var(--hall-inset);
+
+  --border: rgba(237, 228, 211, 0.11);
+  --border-strong: var(--brass-rule);
+  --border-accent: rgba(194, 155, 72, 0.45);
+
+  --gold: var(--brass-burnished);
+  --gold-soft: var(--brass-soft);
+  --gold-dim: var(--brass-rule);
+
+  --text-primary: var(--boxwood-ivory);
+  --text-secondary: var(--boxwood-subtle);
+  --text-faint: var(--boxwood-faint);
+
+  --danger: #c73e3a;
+  --success: var(--felt-light);
+  --white-side: #f5efe6;
+  --black-side: #181d22;
+
+  /* Tournament Board Squares */
+  --square-light: #b9b3a5;
+  --square-dark: #6e6a5e;
+  --square-selected: var(--brass-burnished);
+  --square-lastmove: rgba(194, 155, 72, 0.35);
+  --square-check: rgba(199, 62, 58, 0.7);
+
+  /* Typography */
+  --font-editorial: var(--font-serif), 'Newsreader', 'Georgia', 'Times New Roman', serif;
+  --font-ui: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-notation: var(--font-geist-mono), 'SFMono-Regular', Consolas, monospace;
+
+  /* Effects & Borders */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.65);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* Mechanical Movement Curves */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-plunger: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   ATMOSPHERE THEME VARIABLE ADAPTATIONS
+   ============================================================ */
+
+[data-atmosphere="royal-midnight"] {
+  --hall-slate: #070a12;
+  --hall-surface: #10162a;
+  --hall-raised: #1a2340;
+  --hall-inset: #060913;
+  --border: rgba(147, 197, 253, 0.16);
+  --border-strong: #3b82f6;
+  --border-accent: rgba(96, 165, 250, 0.45);
+  --gold: #60a5fa;
+  --gold-soft: #93c5fd;
+  --gold-dim: #1e3a8a;
+  --text-primary: #f0f6ff;
+  --text-secondary: #94a3b8;
+  --text-faint: #64748b;
+  --brass-burnished: #60a5fa;
+  --brass-soft: #93c5fd;
+  --brass-glow: rgba(96, 165, 250, 0.16);
+}
+
+[data-atmosphere="golden-chess"] {
+  --hall-slate: #0e0c08;
+  --hall-surface: #1e1910;
+  --hall-raised: #2a2215;
+  --hall-inset: #090705;
+  --border: rgba(212, 175, 55, 0.22);
+  --border-strong: #d4af37;
+  --border-accent: rgba(212, 175, 55, 0.6);
+  --gold: #d4af37;
+  --gold-soft: #fef08a;
+  --gold-dim: #785818;
+  --text-primary: #fdfaf3;
+  --text-secondary: #baa882;
+  --text-faint: #786b51;
+  --brass-burnished: #d4af37;
+  --brass-soft: #fef08a;
+  --brass-glow: rgba(212, 175, 55, 0.18);
+}
+
+[data-atmosphere="emerald-strategy"] {
+  --hall-slate: #060e0a;
+  --hall-surface: #0f2218;
+  --hall-raised: #173224;
+  --hall-inset: #040906;
+  --border: rgba(52, 211, 153, 0.18);
+  --border-strong: #10b981;
+  --border-accent: rgba(52, 211, 153, 0.45);
+  --gold: #10b981;
+  --gold-soft: #6ee7b7;
+  --gold-dim: #064e3b;
+  --text-primary: #f0fdf4;
+  --text-secondary: #86efac;
+  --text-faint: #4ade80;
+  --brass-burnished: #10b981;
+  --brass-soft: #6ee7b7;
+  --brass-glow: rgba(16, 185, 129, 0.16);
+}
+
+[data-atmosphere="obsidian"] {
+  --hall-slate: #040506;
+  --hall-surface: #14171f;
+  --hall-raised: #1c212c;
+  --hall-inset: #090b0e;
+  --border: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.3);
+  --border-accent: rgba(255, 255, 255, 0.4);
+  --gold: #e2e8f0;
+  --gold-soft: #ffffff;
+  --gold-dim: #475569;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-faint: #64748b;
+  --brass-burnished: #e2e8f0;
+  --brass-soft: #ffffff;
+  --brass-glow: rgba(255, 255, 255, 0.12);
+}
+
+[data-atmosphere="cosmic-chess"] {
+  --hall-slate: #050711;
+  --hall-surface: #12142d;
+  --hall-raised: #1c1e45;
+  --hall-inset: #060714;
+  --border: rgba(168, 85, 247, 0.2);
+  --border-strong: #a855f7;
+  --border-accent: rgba(192, 132, 252, 0.5);
+  --gold: #c084fc;
+  --gold-soft: #e9d5ff;
+  --gold-dim: #581c87;
+  --text-primary: #faf5ff;
+  --text-secondary: #d8b4fe;
+  --text-faint: #9333ea;
+  --brass-burnished: #c084fc;
+  --brass-soft: #e9d5ff;
+  --brass-glow: rgba(192, 132, 252, 0.18);
+}
+
+[data-atmosphere="classic-tournament"] {
+  --hall-slate: #100d0a;
+  --hall-surface: #1e1913;
+  --hall-raised: #2c241c;
+  --hall-inset: #0b0907;
+  --border: rgba(194, 139, 72, 0.18);
+  --border-strong: #c28b48;
+  --border-accent: rgba(194, 139, 72, 0.5);
+  --gold: #c28b48;
+  --gold-soft: #f5e2c4;
+  --gold-dim: #6e471d;
+  --text-primary: #fcf8f2;
+  --text-secondary: #b8a287;
+  --text-faint: #73624e;
+  --brass-burnished: #c28b48;
+  --brass-soft: #f5e2c4;
+  --brass-glow: rgba(194, 139, 72, 0.18);
+}
+
+/* ---------- Base ---------- */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans), 'Segoe UI', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(212, 169, 64, 0.3);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dim);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---------- Shared controls ---------- */
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.icon-btn:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  background: var(--bg-raised);
+}
+
+.btn {
+  padding: 0.6rem 1rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease), transform 0.15s var(--ease);
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: var(--bg-elevated);
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn.danger:hover:not(:disabled) {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* ---------- Modal primitives (shared) ---------- */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 6, 8, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: overlayIn 0.2s var(--ease);
+}
+
+@keyframes overlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Chess board layout */
+.chessboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #121212, #000);
+  border: 2px solid #ffd700;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
+}
+
+.chessboard-container {
+  position: relative;
+}
+
+.chessboard-squares {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  gap: 2px;
+}
+
+.chessboard-square {
+  position: relative;
+  z-index: 1;
+  background-color: #696969;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+
+.chessboard-square.selected {
+  box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.6);
+}
+
+.chessboard-square.light {
+  background-color: #e0e0e0;
+}
+
+.chessboard-square.dark {
+  background-color: #b0b0b0;
+}
+
+.chess-piece {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #ffd700;
+  border: 1px solid #000;
+  border-radius: 50%;
+  font-size: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.player-panel,
+.move-history {
+  background: linear-gradient(135deg, #121212, #000);
+  border: 2px solid #ffd700;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
+  margin-left: 20px;
+}
+
+.player-info {
+  color: #ffffff;
+}
+
+.move-history {
+  min-height: 200px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

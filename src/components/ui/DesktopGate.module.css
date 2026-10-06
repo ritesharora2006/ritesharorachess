@@ -1,0 +1,287 @@
+/* ============================================================
+   RITESH CHESS — Desktop Only Gatekeeper
+   Full-screen championship overlay on mobile/small viewports.
+   ============================================================ */
+
+/* Desktop Container: standard display on desktop */
+.appContainer {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Mobile Gate Overlay: hidden on desktop */
+.mobileGateOverlay {
+  display: none;
+}
+
+/* ------------------------------------------------------------
+   MOBILE & SMALL SCREEN BREAKPOINT (<1024px or small landscape)
+   ------------------------------------------------------------ */
+@media (max-width: 1023px), (max-height: 580px) {
+  .appContainer {
+    display: none !important;
+  }
+
+  .mobileGateOverlay {
+    display: flex !important;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 999999;
+    background: #090c10;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1.25rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+  }
+}
+
+/* Background Atmosphere on Gate */
+.gateBackdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(194, 155, 72, 0.12) 0%, transparent 65%),
+    radial-gradient(circle at 85% 85%, rgba(35, 73, 55, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #10141b 0%, #090c10 100%);
+  z-index: 0;
+}
+
+.gateVignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  z-index: 1;
+}
+
+.gateRays {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(237, 228, 211, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(237, 228, 211, 0.2) 1px, transparent 1px);
+  background-size: 32px 32px;
+  z-index: 1;
+}
+
+/* Card Container */
+.gateCard {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 460px;
+  margin: auto;
+  padding: 2.25rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(18, 23, 30, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(194, 155, 72, 0.35);
+  border-radius: 16px;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.8),
+    0 0 32px rgba(194, 155, 72, 0.08),
+    inset 0 1px 0 rgba(237, 228, 211, 0.1);
+  animation: gateCardIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes gateCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Plaque Badge */
+.gateBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  margin-bottom: 1.5rem;
+  background: rgba(194, 155, 72, 0.1);
+  border: 1px solid rgba(194, 155, 72, 0.35);
+  border-radius: 30px;
+  color: #d6b25e;
+  font-family: var(--font-geist-sans), -apple-system, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.beaconDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #31644b;
+  box-shadow: 0 0 6px #31644b;
+  animation: pulseDot 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* Monitor Graphic Illustration */
+.visualWrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.visualGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(194, 155, 72, 0.25) 0%, transparent 70%);
+  filter: blur(12px);
+  animation: visualPulse 3s infinite alternate ease-in-out;
+}
+
+@keyframes visualPulse {
+  from {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+.monitorSvg {
+  position: relative;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+}
+
+/* Typography */
+.gateTitle {
+  font-family: var(--font-serif), 'Newsreader', Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #ede4d3;
+  letter-spacing: 0.2px;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.gateMessage {
+  font-family: var(--font-geist-sans), -apple-system, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #b0aba0;
+  margin-bottom: 1.5rem;
+  max-width: 360px;
+}
+
+/* Feature Badges Pill Row */
+.featuresRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.featurePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(237, 228, 211, 0.1);
+  border-radius: 6px;
+  color: #ede4d3;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* Sub-notice */
+.gateNotice {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-geist-sans), -apple-system, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #d6b25e;
+  padding: 0.5rem 0.9rem;
+  background: rgba(194, 155, 72, 0.08);
+  border: 1px solid rgba(194, 155, 72, 0.2);
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+}
+
+.gateFooter {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  color: #635f58;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Landscape orientation optimization on compact phones */
+@media (max-height: 520px) {
+  .gateCard {
+    padding: 1.25rem 1.5rem;
+  }
+  .visualWrapper {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 0.75rem;
+  }
+  .monitorSvg {
+    width: 52px;
+    height: 52px;
+  }
+  .gateTitle {
+    font-size: 1.35rem;
+    margin-bottom: 0.4rem;
+  }
+  .gateMessage {
+    font-size: 0.84rem;
+    margin-bottom: 0.9rem;
+  }
+  .featuresRow {
+    display: none;
+  }
+  .gateBadge {
+    margin-bottom: 0.9rem;
+  }
+}
+

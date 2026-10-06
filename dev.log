@@ -1,0 +1,350 @@
+
+> chess-app@0.1.0 dev:all
+> concurrently "npm run server" "npm run dev"
+
+(node:23808) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[0] 
+[0] > chess-app@0.1.0 server
+[0] > node server.js
+[0] 
+[1] 
+[1] > chess-app@0.1.0 dev
+[1] > next dev
+[1] 
+[0] Chess Game Server running on port 3001
+[1] ▲ Next.js 16.3.4 (Turbopack)
+[1] - Local:         http://localhost:3000
+[1] - Network:       http://192.168.0.107:3000
+[1] ✓ Ready in 1134ms
+[1] ✓ Running next.config.ts took 55ms
+[1] 
+[1]  GET / 200 in 1553ms (next.js: 1230ms, application-code: 323ms)
+[0] [Socket] Connected: bc3jrf2Bwe67EIlQAAAC
+[1]  GET / 200 in 47ms (next.js: 8ms, application-code: 38ms)
+[0] [Socket] Connected: YkBtuqmaeTcRQVnYAAAF
+[0] [Socket] Disconnected: YkBtuqmaeTcRQVnYAAAF
+[1]  GET / 200 in 64ms (next.js: 9ms, application-code: 55ms)
+[1] [browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[1] 
+[1] - A server/client branch `if (typeof window !== 'undefined')`.
+[1] - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+[1] - Date formatting in a user's locale which doesn't match the server.
+[1] - External changing data without sending a snapshot of it along with the HTML.
+[1] - Invalid HTML tag nesting.
+[1] 
+[1] It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+[1] 
+[1] https://react.dev/link/hydration-mismatch
+[1] 
+[1]   ...
+[1]     <RedirectErrorBoundary router={{...}}>
+[1]       <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+[1]         <SegmentViewNode type="page" pagePath="page.tsx">
+[1]           <SegmentTrieNode>
+[1]           <ClientPageRoot Component={function ChessPage} serverProvidedParams={{...}}>
+[1]             <ChessPage params={Promise} searchParams={Promise}>
+[1]               <Suspense fallback={<div>}>
+[1]                 <ChessGame>
+[1]                   <GameLobby onSelectMode={function handleGameModeSelect} onJoinWithCode={function handleJoinWithCode} ...>
+[1]                     <div className="GameLobby-...">
+[1]                       <Navbar soundEnabled={true} onToggleSound={function onToggleSound} onSettings={function onSettings} ...>
+[1]                         <header className="Navbar-mod...">
+[1]                           <div>
+[1]                           <nav>
+[1]                           <div className="Navbar-mod...">
+[1]                             <button
+[1]                               className="icon-btn"
+[1]                               onClick={function onToggleSound}
+[1]                               title="Mute sound"
+[1]                               aria-label="Mute sound"
+[1] -                             data-ab-ref="e1"
+[1]                             >
+[1] +                             🔊
+[1]                             <button
+[1]                               className="icon-btn"
+[1]                               onClick={function onSettings}
+[1]                               title="Settings"
+[1]                               aria-label="Settings"
+[1] -                             data-ab-ref="e2"
+[1]                             >
+[1]                             ...
+[1]                       <main className="GameLobby-...">
+[1]                         <section>
+[1]                         <div>
+[1]                         <div className="GameLobby-...">
+[1]                           <section className="GameLobby-...">
+[1]                             <span>
+[1]                             <div>
+[1]                             <h2>
+[1]                             <p>
+[1]                             <fieldset className="GameLobby-...">
+[1]                               <legend>
+[1]                               <div className="GameLobby-..." role="radiogroup" aria-label="Engine dif...">
+[1]                                 <button
+[1]                                   type="button"
+[1]                                   role="radio"
+[1]                                   aria-checked={false}
+[1]                                   className={"GameLobby-module__0j6FeG__difficultyBtn "}
+[1]                                   onClick={function onClick}
+[1] -                                 data-ab-ref="e3"
+[1]                                 >
+[1] +                                 Easy
+[1]                                 <button
+[1]                                   type="button"
+[1]                                   role="radio"
+[1]                                   aria-checked={true}
+[1]                                   className="GameLobby-module__0j6FeG__difficultyBtn GameLobby-module__0j6FeG__difficu..."
+[1]                                   onClick={function onClick}
+[1] -                                 data-ab-ref="e4"
+[1]                                 >
+[1] +                                 Medium
+[1]                                 <button
+[1]                                   type="button"
+[1]                                   role="radio"
+[1]                                   aria-checked={false}
+[1]                                   className={"GameLobby-module__0j6FeG__difficultyBtn "}
+[1]                                   onClick={function onClick}
+[1] -                                 data-ab-ref="e5"
+[1]                                 >
+[1] +                                 Hard
+[1]                             <button
+[1]                               className="GameLobby-module__0j6FeG__ctaPrimary"
+[1]                               onClick={function onClick}
+[1]                               disabled={false}
+[1] -                             data-ab-ref="e6"
+[1]                             >
+[1]                           <section className="GameLobby-...">
+[1]                             <div>
+[1]                             <h2>
+[1]                             <p>
+[1]                             <button
+[1]                               className="GameLobby-module__0j6FeG__cta"
+[1]                               onClick={function onClick}
+[1]                               disabled={false}
+[1] -                             data-ab-ref="e7"
+[1]                             >
+[1]                           <section className="GameLobby-...">
+[1]                             <div>
+[1]                             <h2>
+[1]                             <p>
+[1]                             <button
+[1]                               className="GameLobby-module__0j6FeG__cta"
+[1]                               onClick={function onClick}
+[1]                               disabled={false}
+[1] -                             data-ab-ref="e8"
+[1]                             >
+[1]                           <section className="GameLobby-...">
+[1]                             <div>
+[1]                             <h2>
+[1]                             <p>
+[1]                             <form className="GameLobby-..." onSubmit={function onSubmit}>
+[1]                               <input
+[1]                                 className="GameLobby-module__0j6FeG__joinInput"
+[1]                                 type="text"
+[1]                                 placeholder="ROOM CODE (E.G. X7K9PQ)"
+[1]                                 value=""
+[1]                                 maxLength={10}
+[1]                                 aria-label="Room code"
+[1]                                 onChange={function onChange}
+[1] -                               data-ab-ref="e9"
+[1]                               >
+[1]                               <button
+[1]                                 type="submit"
+[1]                                 className="GameLobby-module__0j6FeG__cta"
+[1]                                 disabled={true}
+[1] -                               data-ab-ref="e10"
+[1]                               >
+[1]         ...
+[1]       ...
+[1]  
+[0] [Socket] Connected: Uno-LWTIYmKwEa9NAAAI
+[0] [Socket] Disconnected: Uno-LWTIYmKwEa9NAAAI
+[1] [browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[1] 
+[1] - A server/client branch `if (typeof window !== 'undefined')`.
+[1] - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+[1] - Date formatting in a user's locale which doesn't match the server.
+[1] - External changing data without sending a snapshot of it along with the HTML.
+[1] - Invalid HTML tag nesting.
+[1] 
+[1] It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+[1] 
+[1] https://react.dev/link/hydration-mismatch
+[1] 
+[1]   ...
+[1]     <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+[1]       <AppDevOverlayErrorBoundary globalError={[...]}>
+[1]         <ReplaySsrOnlyErrors>
+[1]         <DevRootHTTPAccessFallbackBoundary>
+[1]           <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+[1]             <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+[1]               <RedirectBoundary>
+[1]                 <RedirectErrorBoundary router={{...}}>
+[1]                   <Head>
+[1]                   <__next_root_layout_boundary__>
+[1]                     <SegmentViewNode type="layout" pagePath="layout.tsx">
+[1]                       <SegmentTrieNode>
+[1]                       <link>
+[1]                       <script>
+[1]                       <RootLayout>
+[1]                         <html
+[1]                           lang="en"
+[1]                           className="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable"
+[1] -                         data-darkreader-proxy-injected="true"
+[1]                         >
+[1]                   ...
+[1]  
+[1]  GET / 200 in 153ms (next.js: 33ms, application-code: 121ms)
+[0] [Socket] Disconnected: bc3jrf2Bwe67EIlQAAAC
+[1] [browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[1] 
+[1] - A server/client branch `if (typeof window !== 'undefined')`.
+[1] - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+[1] - Date formatting in a user's locale which doesn't match the server.
+[1] - External changing data without sending a snapshot of it along with the HTML.
+[1] - Invalid HTML tag nesting.
+[1] 
+[1] It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+[1] 
+[1] https://react.dev/link/hydration-mismatch
+[1] 
+[1]   ...
+[1]     <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+[1]       <AppDevOverlayErrorBoundary globalError={[...]}>
+[1]         <ReplaySsrOnlyErrors>
+[1]         <DevRootHTTPAccessFallbackBoundary>
+[1]           <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+[1]             <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+[1]               <RedirectBoundary>
+[1]                 <RedirectErrorBoundary router={{...}}>
+[1]                   <Head>
+[1]                   <__next_root_layout_boundary__>
+[1]                     <SegmentViewNode type="layout" pagePath="layout.tsx">
+[1]                       <SegmentTrieNode>
+[1]                       <link>
+[1]                       <script>
+[1]                       <RootLayout>
+[1]                         <html
+[1]                           lang="en"
+[1]                           className="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable"
+[1] -                         data-darkreader-mode="dynamic"
+[1] -                         data-darkreader-scheme="dark"
+[1] -                         data-darkreader-proxy-injected="true"
+[1]                         >
+[1]                   ...
+[1]  
+[1] [browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[1] 
+[1] - A server/client branch `if (typeof window !== 'undefined')`.
+[1] - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+[1] - Date formatting in a user's locale which doesn't match the server.
+[1] - External changing data without sending a snapshot of it along with the HTML.
+[1] - Invalid HTML tag nesting.
+[1] 
+[1] It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+[1] 
+[1] https://react.dev/link/hydration-mismatch
+[1] 
+[1]   ...
+[1]     <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+[1]       <SegmentViewNode type="page" pagePath="page.tsx">
+[1]         <SegmentTrieNode>
+[1]         <ClientPageRoot Component={function ChessPage} serverProvidedParams={{...}}>
+[1]           <ChessPage params={Promise} searchParams={Promise}>
+[1]             <Suspense fallback={<div>}>
+[1]               <ChessGame>
+[1]                 <GameLobby onSelectMode={function handleGameModeSelect} onJoinWithCode={function handleJoinWithCode} ...>
+[1]                   <div className="GameLobby-...">
+[1]                     <Navbar soundEnabled={true} onToggleSound={function onToggleSound} onSettings={function onSettings} ...>
+[1]                       <header className="Navbar-mod...">
+[1]                         <div>
+[1]                         <nav>
+[1]                         <div className="Navbar-mod...">
+[1]                           <button>
+[1]                           <button className="icon-btn" onClick={function onSettings} title="Settings" ...>
+[1]                             <svg
+[1]                               width="18"
+[1]                               height="18"
+[1]                               viewBox="0 0 24 24"
+[1]                               fill="none"
+[1]                               stroke="currentColor"
+[1]                               strokeWidth="2"
+[1] -                             data-darkreader-inline-stroke=""
+[1] -                             style={{--darkreader-inline-stroke:"currentColor"}}
+[1]                             >
+[1]                           ...
+[1]                     <main className="GameLobby-...">
+[1]                       <section>
+[1]                       <div>
+[1]                       <div className="GameLobby-...">
+[1]                         <section className="GameLobby-...">
+[1]                           <span>
+[1]                           <div className="GameLobby-...">
+[1]                             <span className="GameLobby-..." aria-hidden="true">
+[1]                               <svg
+[1]                                 width="26"
+[1]                                 height="26"
+[1]                                 viewBox="0 0 24 24"
+[1]                                 fill="none"
+[1]                                 stroke="currentColor"
+[1]                                 strokeWidth="1.8"
+[1] -                               data-darkreader-inline-stroke=""
+[1] -                               style={{--darkreader-inline-stroke:"currentColor"}}
+[1]                               >
+[1]                             ...
+[1]                           ...
+[1]                         <section className="GameLobby-...">
+[1]                           <div className="GameLobby-...">
+[1]                             <span className="GameLobby-..." aria-hidden="true">
+[1]                               <svg
+[1]                                 width="26"
+[1]                                 height="26"
+[1]                                 viewBox="0 0 24 24"
+[1]                                 fill="none"
+[1]                                 stroke="currentColor"
+[1]                                 strokeWidth="1.8"
+[1] -                               data-darkreader-inline-stroke=""
+[1] -                               style={{--darkreader-inline-stroke:"currentColor"}}
+[1]                               >
+[1]                             ...
+[1]                           ...
+[1]                         <section className="GameLobby-...">
+[1]                           <div className="GameLobby-...">
+[1]                             <span className="GameLobby-..." aria-hidden="true">
+[1]                               <svg
+[1]                                 width="26"
+[1]                                 height="26"
+[1]                                 viewBox="0 0 24 24"
+[1]                                 fill="none"
+[1]                                 stroke="currentColor"
+[1]                                 strokeWidth="1.8"
+[1] -                               data-darkreader-inline-stroke=""
+[1] -                               style={{--darkreader-inline-stroke:"currentColor"}}
+[1]                               >
+[1]                             ...
+[1]                           ...
+[1]                         <section className="GameLobby-...">
+[1]                           <div className="GameLobby-...">
+[1]                             <span className="GameLobby-..." aria-hidden="true">
+[1]                               <svg
+[1]                                 width="26"
+[1]                                 height="26"
+[1]                                 viewBox="0 0 24 24"
+[1]                                 fill="none"
+[1]                                 stroke="currentColor"
+[1]                                 strokeWidth="1.8"
+[1] -                               data-darkreader-inline-stroke=""
+[1] -                               style={{--darkreader-inline-stroke:"currentColor"}}
+[1]                               >
+[1]                             ...
+[1]                           ...
+[1]       ...
+[1]  
+[0] [Socket] Connected: xCgS-ooEK4P2NGi1AAAL
+[1]  GET / 200 in 53ms (next.js: 22ms, application-code: 31ms)
+[1]  GET / 200 in 156ms (next.js: 24ms, application-code: 132ms)
+[1]  GET / 200 in 151ms (next.js: 33ms, application-code: 118ms)
+[0] [Socket] Disconnected: xCgS-ooEK4P2NGi1AAAL
+[0] [Socket] Connected: MLfEy6SDN33KfUKzAAAO
+[0] [Socket] Disconnected: MLfEy6SDN33KfUKzAAAO

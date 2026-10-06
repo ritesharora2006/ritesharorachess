@@ -1,0 +1,611 @@
+/* ============================================================
+   RITESH CHESS — Hero Exhibition Board (World-Class Production)
+   Materials: Handcrafted Walnut Timber, Aged Boxwood Ivory,
+   Burnished Brass Rules, Physical Staunton Physics.
+   Interactive Historical Masterpiece Exhibition (Morphy, Anderssen, Fischer).
+   ============================================================ */
+
+.exhibitionWrap {
+  width: 100%;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  user-select: none;
+  margin: 0 auto;
+  gap: 0.65rem;
+}
+
+/* Masterpiece Game Switcher Tabs */
+.tabsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 0.25rem;
+  background: rgba(14, 17, 20, 0.85);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(8px);
+}
+
+.tabButton {
+  flex: 1;
+  padding: 0.32rem 0.5rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: var(--boxwood-subtle);
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tabButton:hover {
+  color: var(--boxwood-ivory);
+  background: rgba(237, 228, 211, 0.05);
+}
+
+.tabButtonActive {
+  color: var(--brass-burnished);
+  background: rgba(194, 155, 72, 0.12);
+  border-color: rgba(194, 155, 72, 0.4);
+  box-shadow: 0 0 10px rgba(194, 155, 72, 0.15);
+  font-weight: 700;
+}
+
+/* 3D Tilting Board Container — Controlled, never clips */
+.boardTiltWrapper {
+  width: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+}
+
+/* Walnut Outer Frame with Brass Inlay */
+.boardFrame {
+  position: relative;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(145deg, #28211a 0%, #1b1612 50%, #14100c 100%);
+  border: 1px solid var(--brass-rule);
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.8),
+    0 6px 16px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(237, 228, 211, 0.12),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.7);
+  transform-style: preserve-3d;
+  animation: boardBorderBreath 5s ease-in-out infinite alternate;
+}
+
+@keyframes boardBorderBreath {
+  0% {
+    box-shadow:
+      0 18px 44px rgba(0, 0, 0, 0.8),
+      0 6px 16px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(237, 228, 211, 0.12),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    box-shadow:
+      0 18px 44px rgba(0, 0, 0, 0.85),
+      0 6px 16px rgba(0, 0, 0, 0.55),
+      0 0 14px rgba(194, 155, 72, 0.14),
+      inset 0 1px 0 rgba(237, 228, 211, 0.16),
+      inset 0 0 0 1px rgba(194, 155, 72, 0.35);
+  }
+}
+
+/* Subtle Inlaid Brass Corner Accents */
+.cornerBracket {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--brass-burnished);
+  border-style: solid;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.cornerTL {
+  top: 3px;
+  left: 3px;
+  border-width: 1.5px 0 0 1.5px;
+}
+
+.cornerTR {
+  top: 3px;
+  right: 3px;
+  border-width: 1.5px 1.5px 0 0;
+}
+
+.cornerBL {
+  bottom: 3px;
+  left: 3px;
+  border-width: 0 0 1.5px 1.5px;
+}
+
+.cornerBR {
+  bottom: 3px;
+  right: 3px;
+  border-width: 0 1.5px 1.5px 0;
+}
+
+/* Dynamic Specular Sheen Overlay */
+.boardGlare {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 30%),
+    rgba(237, 228, 211, 0.06) 0%,
+    rgba(194, 155, 72, 0.02) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Inner Well & Coordinates */
+.boardInner {
+  position: relative;
+  width: 100%;
+  background: #110e0b;
+  border: 1px solid rgba(0, 0, 0, 0.85);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.7);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* Rank Coordinates (8 to 1) */
+.rankCoords {
+  position: absolute;
+  left: 2px;
+  top: 0;
+  bottom: 0;
+  width: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-family: var(--font-notation);
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: var(--brass-rule);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* File Coordinates (a to h) */
+.fileCoords {
+  position: absolute;
+  bottom: 1px;
+  left: 11px;
+  right: 3px;
+  height: 9px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: var(--font-notation);
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: var(--brass-rule);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* 8x8 Chessboard Grid */
+.boardGrid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+/* Squares */
+.square {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  overflow: visible;
+}
+
+.squareLight {
+  background: #ede4d3;
+}
+
+.squareDark {
+  background: #73685a;
+}
+
+/* Tactical move highlights */
+.squareHighlightOrigin {
+  background: rgba(194, 155, 72, 0.32) !important;
+  box-shadow: inset 0 0 0 1px var(--brass-burnished);
+}
+
+.squareHighlightDest {
+  background: rgba(194, 155, 72, 0.45) !important;
+  box-shadow: inset 0 0 0 1.5px var(--brass-burnished);
+}
+
+/* King in check red beacon */
+.squareKingCheck {
+  background: rgba(220, 38, 38, 0.38) !important;
+  box-shadow: inset 0 0 0 2px #dc2626;
+  animation: checkPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes checkPulse {
+  0%, 100% {
+    box-shadow: inset 0 0 0 2px #dc2626, 0 0 8px rgba(220, 38, 38, 0.5);
+  }
+  50% {
+    box-shadow: inset 0 0 0 2px #ef4444, 0 0 16px rgba(239, 68, 68, 0.75);
+  }
+}
+
+/* Subtle wavefront illumination on destination */
+.wavefrontPulse {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid var(--brass-soft);
+  animation: wavefrontGlow 0.8s cubic-bezier(0.1, 0.8, 0.2, 1) 1 forwards;
+  pointer-events: none;
+  z-index: 4;
+}
+
+@keyframes wavefrontGlow {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Exact Golden Hairline Tracer SVG */
+.tracerSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 6;
+  overflow: visible;
+}
+
+.tracerPath {
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  filter: drop-shadow(0 0 3px rgba(194, 155, 72, 0.7));
+  animation: tracePath 0.45s cubic-bezier(0.25, 1, 0.4, 1) forwards;
+}
+
+@keyframes tracePath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Piece Containers & Shadow Physics */
+.pieceContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.pieceSvg {
+  width: 82%;
+  height: 82%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+  transition: transform 0.2s var(--ease);
+}
+
+.pieceSettle {
+  animation: pieceMicroSettle 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes pieceMicroSettle {
+  0% {
+    transform: scale(1.08) translateY(-2px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Playback Toolbar Controls */
+.playbackToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  background: var(--hall-inset);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.transportControls {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.transportBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: rgba(237, 228, 211, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--boxwood-subtle);
+  cursor: pointer;
+  transition: all 0.15s var(--ease);
+  font-size: 0.75rem;
+}
+
+.transportBtn:hover:not(:disabled) {
+  color: var(--boxwood-ivory);
+  background: rgba(237, 228, 211, 0.1);
+  border-color: var(--brass-rule);
+}
+
+.transportBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.playPauseBtn {
+  width: 28px;
+  height: 28px;
+  background: rgba(194, 155, 72, 0.15);
+  border: 1px solid var(--brass-burnished);
+  color: var(--brass-burnished);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s var(--ease);
+}
+
+.playPauseBtn:hover {
+  background: rgba(194, 155, 72, 0.25);
+  transform: scale(1.04);
+}
+
+.playPauseActive {
+  background: rgba(35, 73, 55, 0.6);
+  border-color: var(--felt-emerald);
+  color: #72cca1;
+  box-shadow: 0 0 8px rgba(114, 204, 161, 0.3);
+}
+
+/* Progress Track & Scrubber */
+.progressWrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.progressBar {
+  position: relative;
+  flex: 1;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #7A602B, #C29B48);
+  border-radius: 2px;
+  transition: width 0.2s ease-out;
+}
+
+.plyCounter {
+  font-family: var(--font-notation);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--boxwood-subtle);
+  min-width: 38px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Plaque Container & Commentary Box */
+.plaqueContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.6rem 0.75rem;
+  background: var(--hall-inset);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.plaqueTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.gameMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.gameMetaIcon {
+  color: var(--brass-burnished);
+  font-size: 0.78rem;
+}
+
+.gameMetaTitle {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--boxwood-ivory);
+  letter-spacing: 0.3px;
+}
+
+.gameMetaYear {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  color: var(--boxwood-subtle);
+}
+
+/* Notation & Badges Row */
+.moveRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.notationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-notation);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--brass-burnished);
+}
+
+.evalTag {
+  padding: 0.08rem 0.35rem;
+  border-radius: 2px;
+  background: rgba(35, 73, 55, 0.4);
+  border: 1px solid rgba(49, 100, 75, 0.35);
+  color: #72cca1;
+  font-size: 0.62rem;
+  font-family: var(--font-ui);
+  display: inline-block;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  animation: evalHeartbeat 2.8s ease-in-out infinite;
+}
+
+@keyframes evalHeartbeat {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(114, 204, 161, 0.35);
+  }
+}
+
+/* Tactical Tags */
+.badgeTag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.1rem 0.35rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badgeBrilliant {
+  background: rgba(14, 165, 233, 0.2);
+  border: 1px solid rgba(14, 165, 233, 0.45);
+  color: #38bdf8;
+  box-shadow: 0 0 6px rgba(14, 165, 233, 0.3);
+}
+
+.badgeSacrifice {
+  background: rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(220, 38, 38, 0.45);
+  color: #f87171;
+}
+
+.badgeCheckmate {
+  background: rgba(35, 73, 55, 0.5);
+  border: 1px solid #10b981;
+  color: #34d399;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.35);
+}
+
+.badgeGreatMove {
+  background: rgba(194, 155, 72, 0.2);
+  border: 1px solid var(--brass-burnished);
+  color: var(--brass-burnished);
+}
+
+.badgeBook {
+  background: rgba(237, 228, 211, 0.08);
+  border: 1px solid rgba(237, 228, 211, 0.2);
+  color: var(--boxwood-subtle);
+}
+
+/* Archival Commentary */
+.commentaryText {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: var(--boxwood-subtle);
+  font-style: italic;
+  padding-top: 0.2rem;
+  border-top: 1px solid rgba(237, 228, 211, 0.08);
+}
+
+/* Universal Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .boardTiltWrapper {
+    transform: none !important;
+    transition: none !important;
+  }
+  .wavefrontPulse,
+  .tracerPath,
+  .pieceSettle {
+    animation: none !important;
+  }
+}
+
+/* Touch screen adjustments */
+@media (hover: none) {
+  .boardTiltWrapper {
+    transform: none !important;
+  }
+}

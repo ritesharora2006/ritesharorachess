@@ -1,0 +1,392 @@
+.lobbyWrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lobbyContainer {
+  max-width: 1200px;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroSection {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+}
+
+.heroBadge {
+  display: inline-block;
+  background: rgba(20, 125, 100, 0.2);
+  border: 1px solid var(--glass-border);
+  color: var(--accent-gold);
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.mainTitle {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  line-height: 1.15;
+  margin-bottom: 0.6rem;
+}
+
+.brandHighlight {
+  color: var(--accent-gold);
+  text-shadow: 0 0 25px rgba(217, 169, 40, 0.4);
+}
+
+.subTitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.modesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1050px;
+}
+
+.modeCard {
+  background: linear-gradient(135deg, rgba(20, 24, 32, 0.85) 0%, rgba(13, 16, 22, 0.95) 100%);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  text-align: left;
+}
+
+.modeCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent-gold) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modeCard:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(217, 169, 40, 0.2);
+}
+
+.modeCard:hover::before {
+  opacity: 1;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.2rem;
+}
+
+.cardIcon {
+  font-size: 2.4rem;
+  background: rgba(20, 125, 100, 0.15);
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--glass-border);
+  transition: transform 0.3s ease;
+}
+
+.modeCard:hover .cardIcon {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.modeBadge {
+  background: rgba(217, 169, 40, 0.15);
+  border: 1px solid var(--glass-border);
+  color: var(--accent-gold);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.3rem 0.7rem;
+  border-radius: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cardBody {
+  margin-bottom: 1.5rem;
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.5px;
+}
+
+.cardDesc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Difficulty Selector for AI */
+.difficultyGroup {
+  margin-top: 1rem;
+}
+
+.difficultyLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.difficultyButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.difficultyBtn {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 6px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.difficultyBtn:hover {
+  border-color: var(--accent-gold);
+  color: var(--text-primary);
+}
+
+.difficultyBtn.active {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  border-color: var(--accent-gold);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(20, 125, 100, 0.4);
+}
+
+/* Card CTA Button */
+.ctaBtn {
+  width: 100%;
+  padding: 0.85rem 1.2rem;
+  background: linear-gradient(135deg, var(--primary-green) 0%, #16624f 100%);
+  border: 1px solid var(--glass-border);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    box-shadow: 0 0 20px rgba(217, 169, 40, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+/* Join Modal Form */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(5, 6, 8, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modalContent {
+  background: linear-gradient(135deg, rgba(20, 24, 32, 0.95) 0%, rgba(10, 12, 16, 0.98) 100%);
+  border: 1px solid var(--glass-border-hover);
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 90%;
+  max-width: 440px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(217, 169, 40, 0.25);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modalTitle {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--accent-gold);
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+
+.modalSub {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.errorBox {
+  background: rgba(255, 68, 68, 0.15);
+  border: 1px solid #ff4444;
+  color: #ff8888;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  font-size: 0.85rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.inputGroup {
+  margin-bottom: 1.2rem;
+}
+
+.inputLabel {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.4rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.25s ease;
+
+  &::placeholder {
+    color: #64748b;
+  }
+
+  &:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 15px rgba(217, 169, 40, 0.3);
+  }
+}
+
+.formButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.modalPrimaryBtn,
+.modalSecondaryBtn {
+  flex: 1;
+  padding: 0.85rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modalPrimaryBtn {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--light-gold) 100%);
+  border: 1px solid var(--accent-gold);
+  color: #050608;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(217, 169, 40, 0.5);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.modalSecondaryBtn {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+
+  &:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+  }
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .modesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mainTitle {
+    font-size: 2.2rem;
+  }
+}

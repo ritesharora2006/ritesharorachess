@@ -1,0 +1,206 @@
+/* ============================================================
+   RITESH CHESS — Background Atmosphere Theme Architecture
+   Multi-layered GPU-accelerated atmospheric environment system.
+   ============================================================ */
+
+.atmosphereContainer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  user-select: none;
+  transition: background 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Layer 1: Base Theme Gradient */
+.baseGradient {
+  position: absolute;
+  inset: 0;
+  transition: background 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.45s ease;
+}
+
+/* Layer 2: Overhead Tournament Spotlight */
+.spotlightBeam {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  max-width: 1400px;
+  height: 95vh;
+  filter: blur(50px);
+  opacity: 0.6;
+  pointer-events: none;
+  transition: background 0.45s ease, opacity 0.45s ease;
+}
+
+/* Layer 3: Faint Strategic Calculation Grid / Coordinate Rays */
+.tacticalRays {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+/* Layer 4: Floating Motes / Stardust */
+.motesWrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mote {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatMote 6s ease-in-out infinite;
+}
+
+@keyframes floatMote {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.6);
+  }
+  35% {
+    opacity: 0.65;
+  }
+  70% {
+    opacity: 0.4;
+    transform: translateY(-24px) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-48px) scale(0.7);
+  }
+}
+
+/* Layer 5: Film Vignette & Table Rim Shade */
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, transparent 50%, rgba(0, 0, 0, 0.75) 100%);
+  pointer-events: none;
+}
+
+/* ============================================================
+   THEME ATMOSPHERIC PALETTES
+   ============================================================ */
+
+/* 1. Grandmaster Hall */
+.themeGrandmasterHall .baseGradient {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(194, 155, 72, 0.08) 0%, transparent 70%),
+    linear-gradient(180deg, #12100d 0%, #0d0c0a 50%, #080706 100%);
+}
+.themeGrandmasterHall .spotlightBeam {
+  background: radial-gradient(ellipse at 50% 10%, rgba(247, 242, 234, 0.06) 0%, rgba(194, 155, 72, 0.03) 40%, transparent 70%);
+}
+.themeGrandmasterHall .mote {
+  background: #ede4d3;
+  box-shadow: 0 0 6px rgba(237, 228, 211, 0.5);
+}
+
+/* 2. Royal Midnight */
+.themeRoyalMidnight .baseGradient {
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(79, 139, 249, 0.12) 0%, transparent 65%),
+    radial-gradient(circle at 85% 90%, rgba(30, 58, 138, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0e1a 0%, #070a12 50%, #04060b 100%);
+}
+.themeRoyalMidnight .spotlightBeam {
+  background: radial-gradient(ellipse at 50% 10%, rgba(147, 197, 253, 0.08) 0%, rgba(59, 130, 246, 0.04) 45%, transparent 75%);
+}
+.themeRoyalMidnight .mote {
+  background: #93c5fd;
+  box-shadow: 0 0 8px rgba(147, 197, 253, 0.7);
+}
+
+/* 3. Golden Chess */
+.themeGoldenChess .baseGradient {
+  background:
+    radial-gradient(ellipse at 50% -15%, rgba(212, 175, 55, 0.18) 0%, transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(146, 107, 28, 0.07) 0%, transparent 50%),
+    linear-gradient(180deg, #14110b 0%, #0e0c08 50%, #080705 100%);
+}
+.themeGoldenChess .spotlightBeam {
+  background: radial-gradient(ellipse at 50% 15%, rgba(254, 240, 138, 0.11) 0%, rgba(212, 175, 55, 0.05) 50%, transparent 75%);
+}
+.themeGoldenChess .mote {
+  background: #fef08a;
+  box-shadow: 0 0 10px rgba(254, 240, 138, 0.8), 0 0 4px #d4af37;
+}
+
+/* 4. Emerald Strategy */
+.themeEmeraldStrategy .baseGradient {
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(46, 189, 126, 0.12) 0%, transparent 65%),
+    radial-gradient(circle at 80% 85%, rgba(20, 83, 45, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #09140f 0%, #060e0a 50%, #030705 100%);
+}
+.themeEmeraldStrategy .spotlightBeam {
+  background: radial-gradient(ellipse at 50% 10%, rgba(110, 231, 183, 0.08) 0%, rgba(16, 185, 129, 0.04) 50%, transparent 75%);
+}
+.themeEmeraldStrategy .mote {
+  background: #6ee7b7;
+  box-shadow: 0 0 8px rgba(110, 231, 183, 0.7);
+}
+
+/* 5. Obsidian */
+.themeObsidian .baseGradient {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+    linear-gradient(180deg, #08090b 0%, #040506 50%, #020203 100%);
+}
+.themeObsidian .spotlightBeam {
+  background: radial-gradient(ellipse at 50% 10%, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
+}
+
+/* 6. Cosmic Chess */
+.themeCosmicChess .baseGradient {
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(168, 85, 247, 0.14) 0%, transparent 60%),
+    radial-gradient(circle at 15% 75%, rgba(99, 102, 241, 0.09) 0%, transparent 45%),
+    radial-gradient(circle at 85% 25%, rgba(217, 70, 239, 0.06) 0%, transparent 40%),
+    linear-gradient(180deg, #0a0d1f 0%, #050711 50%, #020308 100%);
+}
+.themeCosmicChess .spotlightBeam {
+  background: radial-gradient(ellipse at 50% 10%, rgba(216, 180, 254, 0.1) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 75%);
+}
+.themeCosmicChess .mote {
+  background: #e9d5ff;
+  box-shadow: 0 0 10px rgba(233, 213, 255, 0.9), 0 0 4px #a855f7;
+}
+
+/* 7. Classic Tournament */
+.themeClassicTournament .baseGradient {
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(194, 139, 72, 0.12) 0%, transparent 65%),
+    radial-gradient(circle at 30% 85%, rgba(88, 56, 26, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #16120e 0%, #100d0a 50%, #0a0806 100%);
+}
+.themeClassicTournament .spotlightBeam {
+  background: radial-gradient(ellipse at 50% 10%, rgba(245, 226, 196, 0.07) 0%, rgba(194, 139, 72, 0.04) 50%, transparent 75%);
+}
+.themeClassicTournament .mote {
+  background: #f5e2c4;
+  box-shadow: 0 0 6px rgba(245, 226, 196, 0.6);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .atmosphereContainer,
+  .baseGradient,
+  .spotlightBeam {
+    transition: none !important;
+  }
+  .mote {
+    animation: none !important;
+    opacity: 0.3 !important;
+  }
+}
+

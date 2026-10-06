@@ -1,0 +1,233 @@
+/* ============================================================
+   RITESH CHESS — Bot Persona Selection Modal
+   ============================================================ */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 10, 14, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal {
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--hall-surface, #141820);
+  border: 1px solid var(--border, #2a3242);
+  border-top: 2px solid var(--brass-burnished, #c29b48);
+  border-radius: var(--radius-lg, 8px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  color: var(--boxwood-pure, #ede4d3);
+}
+
+.header {
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border, #2a3242);
+  background: var(--hall-inset, #0d1017);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--brass-burnished, #c29b48);
+}
+
+.title {
+  font-family: var(--font-editorial, 'Newsreader', serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--boxwood-pure, #ede4d3);
+}
+
+.closeBtn {
+  background: transparent;
+  border: 1px solid var(--border, #2a3242);
+  color: var(--boxwood-subtle, #9e978a);
+  font-size: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.closeBtn:hover {
+  border-color: var(--brass-rule, #423722);
+  color: var(--boxwood-pure, #ede4d3);
+}
+
+.botGrid {
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.botCard {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: var(--hall-inset, #0d1017);
+  border: 1px solid var(--border, #2a3242);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.botCard:hover {
+  border-color: var(--brass-burnished, #c29b48);
+  background: rgba(194, 155, 72, 0.04);
+  transform: translateY(-1px);
+}
+
+.botCardSelected {
+  border-color: var(--brass-burnished, #c29b48) !important;
+  background: rgba(194, 155, 72, 0.08) !important;
+  box-shadow: 0 0 0 1px var(--brass-burnished, #c29b48);
+}
+
+.avatarWrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border, #2a3242);
+}
+
+.botMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.botHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.botName {
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--boxwood-pure, #ede4d3);
+}
+
+.botBadge {
+  font-family: var(--font-notation, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--boxwood-subtle, #9e978a);
+  letter-spacing: 0.5px;
+}
+
+.botBio {
+  font-size: 0.82rem;
+  color: var(--boxwood-subtle, #9e978a);
+  line-height: 1.4;
+}
+
+.botRatingCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.ratingNumber {
+  font-family: var(--font-editorial, 'Newsreader', serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--brass-burnished, #c29b48);
+  line-height: 1;
+}
+
+.ratingLabel {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--boxwood-subtle, #9e978a);
+  letter-spacing: 0.8px;
+}
+
+.footer {
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid var(--border, #2a3242);
+  background: var(--hall-inset, #0d1017);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.btn {
+  padding: 0.65rem 1.25rem;
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.15s ease;
+}
+
+.primaryBtn {
+  background: var(--brass-burnished, #c29b48);
+  color: #0d1017;
+  border: 1px solid var(--brass-burnished, #c29b48);
+}
+
+.primaryBtn:hover {
+  background: #d4ac59;
+}
+
+.secondaryBtn {
+  background: transparent;
+  border: 1px solid var(--border, #2a3242);
+  color: var(--boxwood-pure, #ede4d3);
+}
+
+.secondaryBtn:hover {
+  border-color: var(--brass-rule, #423722);
+}
+

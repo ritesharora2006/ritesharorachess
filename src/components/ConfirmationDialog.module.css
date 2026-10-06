@@ -1,0 +1,131 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: linear-gradient(135deg, #1a5f4a 0%, #2d8b6f 100%);
+  border: 4px solid #d4af37;
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(212, 175, 55, 0.4);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #d4af37;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.message {
+  font-size: 1rem;
+  color: #d0d0d0;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: 2px solid #d4af37;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  flex: 1;
+  max-width: 180px;
+}
+
+.cancel {
+  background: transparent;
+  color: #d4af37;
+
+  &:hover {
+    background: rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  }
+}
+
+.confirm {
+  background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%);
+  color: #0d3b2e;
+
+  &:hover {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    transform: translateY(-2px);
+  }
+
+  &.danger {
+    background: linear-gradient(135deg, #ff4444 0%, #ff6666 100%);
+    color: #fff;
+
+    &:hover {
+      box-shadow: 0 0 20px rgba(255, 68, 68, 0.6);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .modal {
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}

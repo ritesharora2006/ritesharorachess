@@ -1,0 +1,136 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: linear-gradient(135deg, #1a5f4a 0%, #2d8b6f 100%);
+  border: 4px solid #d4af37;
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(212, 175, 55, 0.4);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #d4af37;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #d0d0d0;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 0.5px;
+}
+
+.piecesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.pieceButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 3px solid #d4af37;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  color: #f0f0f0;
+
+  &:hover {
+    background: rgba(212, 175, 55, 0.2);
+    box-shadow: 
+      0 0 20px rgba(212, 175, 55, 0.4),
+      inset 0 0 10px rgba(212, 175, 55, 0.1);
+    transform: translateY(-3px);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
+.pieceSymbol {
+  font-size: 3rem;
+  line-height: 1;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
+}
+
+.pieceName {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #d4af37;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .modal {
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .piecesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .pieceButton {
+    padding: 1rem;
+  }
+
+  .pieceSymbol {
+    font-size: 2.5rem;
+  }
+}
